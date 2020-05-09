@@ -17,9 +17,14 @@ export default {
 };
 </script>
 <style scoped>
-  .header {
-    background-color: #bbb;
-    padding: 3px;
-    cursor: pointer;
-  }
+.header {
+  background-color: #bbb;
+  padding: 3px;
+  cursor: pointer;
+}
+.header span {
+  width: 100%;
+  /* block or inline-block so width can take effect */
+  display:block;
+}
 </style>
