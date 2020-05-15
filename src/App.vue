@@ -17,20 +17,25 @@
         </ul>
       </nav>
     </header>
-    <main>
-      <div >
-      <router-view />
-      </div>
-    </main>
+    <div class="mainContainer">
+      <aside>
+         <router-view name="sidebar" />
+      </aside>
+      <main>
+        <router-view /> <!-- name="default" by default -->
+      </main>
+    </div>
   </div>
 </template>
 
-<script>
 
+<script>
 export default {
   name: 'App',
 };
 </script>
+
+
 <style>
 body{
   background: linear-gradient(to bottom, #555, #999);
@@ -48,15 +53,14 @@ body{
   margin-top: 60px;
 }
 main {
-  margin:0 auto;
   padding: 30px;
   background-color: white;
-  width: 1024px;
+  width: 964px;
   min-height: 300px;
 }
 header {
   background-color: #999;
-  width: 1084px;
+  width: 1184px;
   margin: 0 auto;
 }
 ul {
@@ -80,5 +84,16 @@ ul {
 .router-link-active {
   /* a Vue native property */
   color: whitesmoke;
+}
+.mainContainer {
+  display: flex;
+  margin: 10px auto 0 auto;
+  justify-content: center;
+}
+aside {
+  padding: 30px;
+  background-color: #aaa;
+  width: 100px;
+  min-height: 300px;
 }
 </style>
