@@ -1,12 +1,12 @@
 <template>
   <div class="sidebar">
-    Build Sidebar
+    Standard Sidebar
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Build',
+  name: 'Standard',
 };
 </script>
 
@@ -14,6 +14,5 @@ export default {
 .sidebar {
   font-size: 50px;
   transform: rotate(90deg);
-  color: olivedrab;
 }
 </style>
