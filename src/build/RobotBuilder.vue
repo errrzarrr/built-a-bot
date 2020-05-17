@@ -92,16 +92,15 @@ export default {
   },
   methods: {
     addToCart() {
-      this.addedToCart = true;
       const robot = this.selectedPart;
       const cost = robot.head.cost
         + robot.torso.cost
         + robot.rightArm.cost
         + robot.leftArm.cost
         + robot.base.cost;
+      this.addedToCart = true;
       // eslint-disable-next-line prefer-object-spread
-      this.cart.push(Object.assign({}, robot, { cost }));
-      return cost;
+      this.$store.commit('addRobotToCart', Object.assign({}, robot, { cost }));
     },
   },
   computed: {
