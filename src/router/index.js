@@ -24,6 +24,7 @@ const children = [
 ];
 
 const routerOptions = {
+  mode: 'history',
   routes: [
     { path: '/', name: 'Home', components: { default: HomePage, sidebar: SidebarStandard } },
     { path: '/build', name: 'Build', components: { default: RobotBuilder, sidebar: SidebarBuild } },
@@ -42,6 +43,10 @@ const routerOptions = {
       name: 'Parts',
       component: PartInfo,
       props: true,
+      beforeEnter(to, from, next) {
+        const isValidId = Number.isInteger(Number(to.params.id));
+        next(isValidId);
+      },
     },
   ],
 };
