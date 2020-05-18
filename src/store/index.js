@@ -3,14 +3,16 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const storeOptions = {
-  state: {
-    cart: [],
-  },
-  mutations: {
-    addRobotToCart(state, robot) {
-      state.cart.push(robot);
-    },
+
+const state = {
+  cart: [],
+};
+
+const mutations = {
+  // eslint-disable-next-line no-shadow
+  addRobotToCart(state, robot) {
+    state.cart.push(robot);
   },
 };
-export default new Vuex.Store(storeOptions);
+
+export default new Vuex.Store({ state, mutations });

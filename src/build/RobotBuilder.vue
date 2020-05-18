@@ -40,21 +40,6 @@
       <PartSelector :parts="parts.bases" position="bottom"
       @partSelected="part=>selectedPart.base=part"/>
     </div>
-    <section class="cart-table">
-      <h1>Cart</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Robot</th> <th class="cost">Cost</th>
-          </tr>
-          <tbody>
-            <tr v-for="(robot,index) in cart" :key="index">
-              <td class="title">{{robot.head.title}}</td> <td class="cost">{{robot.cost}}</td>
-            </tr>
-          </tbody>
-        </thead>
-      </table>
-    </section>
   </div>
 </template>
 
@@ -101,6 +86,7 @@ export default {
       this.addedToCart = true;
       // eslint-disable-next-line prefer-object-spread
       this.$store.commit('addRobotToCart', Object.assign({}, robot, { cost }));
+      return cost;
     },
   },
   computed: {

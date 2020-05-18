@@ -10,9 +10,15 @@
               </router-link >
           </li>
           <li class="nav-item">
-             <router-link :to="{ name: 'Build' }" class='nav-link' exact>
+            <router-link :to="{ name: 'Build' }" class='nav-link' exact>
                 Build
               </router-link >
+          </li>
+          <li class="nav-item cart">
+            <router-link to="/cart" class='nav-link' exact>
+              Cart
+            </router-link>
+            <span class="cart-items">{{cart.length}}</span>
           </li>
         </ul>
       </nav>
@@ -30,8 +36,15 @@
 
 
 <script>
+
+
 export default {
   name: 'App',
+  computed: {
+    cart() {
+      return this.$store.state.cart;
+    },
+  },
 };
 </script>
 
@@ -95,5 +108,21 @@ aside {
   background-color: #aaa;
   width: 100px;
   min-height: 300px;
+}
+.nav-item.cart {
+  position: relative;
+  margin-left: auto;
+  border-right: none;
+}
+.cart-items {
+  position:absolute;
+  top:-5px;
+  right:-9px;
+  font-size: 16px;
+  width: 24px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 100px;
+  background-color: mediumseagreen;
 }
 </style>
