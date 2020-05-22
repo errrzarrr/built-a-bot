@@ -1,6 +1,22 @@
 <template>
-  <div>
-    <h1>Cart</h1>
+<div>
+  <h1>Cart</h1>
+  <table>
+    <thead>
+      <tr>
+        <th class="robot-title">Robot</th>
+        <th class="cost">Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(robot, index) in cart" :key="index">
+        <td class="robot-title">{{robot.head.title}}</td>
+        <td class="cost">{{robot.cost}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <section>
+    <h2 class="saleItems">These are available for you to buy:</h2>
     <table>
       <thead>
         <tr>
@@ -9,13 +25,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(robot, index) in cart" :key="index">
+        <tr v-for="(robot, index) in cartSaleItems" :key="index">
           <td class="robot-title">{{robot.head.title}}</td>
           <td class="cost">{{robot.cost}}</td>
         </tr>
       </tbody>
     </table>
- </div>
+  </section>
+</div>
+
 </template>
 
 <script>
@@ -26,6 +44,9 @@ export default {
   computed: {
     cart() {
       return this.$store.state.cart;
+    },
+    cartSaleItems() {
+      return this.$store.getters.cartSaleItems;
     },
   },
 };
@@ -41,5 +62,10 @@ td, th {
 }
 .cost {
   text-align: right;
+}
+.saleItems {
+  margin-top: 50px;
+  font-size: 18px;
+  color: forestgreen;
 }
 </style>

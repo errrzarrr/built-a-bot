@@ -15,4 +15,10 @@ const mutations = {
   },
 };
 
-export default new Vuex.Store({ state, mutations });
+const getters = {
+  cartSaleItems(theState) {
+    return theState.cart.filter((item) => item.head.onSale);
+  },
+};
+
+export default new Vuex.Store({ state, mutations, getters });
