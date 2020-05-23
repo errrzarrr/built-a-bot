@@ -17,8 +17,8 @@
           <li class="nav-item cart">
             <router-link to="/cart" class='nav-link' exact>
               Cart
+              <span class="cart-items">{{cart.length}}</span>
             </router-link>
-            <span class="cart-items">{{cart.length}}</span>
           </li>
         </ul>
       </nav>
@@ -34,10 +34,7 @@
   </div>
 </template>
 
-
 <script>
-
-
 export default {
   name: 'App',
   computed: {
@@ -47,7 +44,6 @@ export default {
   },
 };
 </script>
-
 
 <style>
 body{
