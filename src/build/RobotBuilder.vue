@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content" v-if="availableParts">
     <div class="preview">
       <CollapsibleSection>
       <div class="preview-content">
@@ -19,38 +19,33 @@
       <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
     </div>
     <div class="top-row">
-       <!--  <div :class="[saleBorderClass, 'top', 'part']" >
-         <section class="robot-name">
-          {{selectedPart.head.title}}
-          <span v-show="selectedPart.head.onSale" class="sale">On Sale!</span>
-        </section>
-        </div> -->
-        <PartSelector :parts="parts.heads" position="top"
+        <PartSelector :parts="availableParts.heads" position="top"
         @partSelected="part=>selectedPart.head=part" />
     </div>
     <div class="middle-row">
-      <PartSelector :parts="parts.arms" position="left"
+      <PartSelector :parts="availableParts.arms" position="left"
       @partSelected="part=>selectedPart.leftArm=part"/>
-      <PartSelector :parts="parts.torsos" position="center"
+      <PartSelector :parts="availableParts.torsos" position="center"
       @partSelected="part=>selectedPart.torso=part" />
-      <PartSelector :parts="parts.arms" position="right"
+      <PartSelector :parts="availableParts.arms" position="right"
       @partSelected="part=>selectedPart.rightArm=part"/>
     </div>
     <div class="bottom-row">
-      <PartSelector :parts="parts.bases" position="bottom"
+      <PartSelector :parts="availableParts.bases" position="bottom"
       @partSelected="part=>selectedPart.base=part"/>
     </div>
   </div>
 </template>
 
 <script>
-import parts from '../data/parts';
+
 import createdHookMixin from './created-hook-mixin';
 import PartSelector from './PartSelector.vue';
 import CollapsibleSection from '../shared/CollapsibleSection.vue';
 
 export default {
   name: 'RobotBuilder',
+
   beforeRouteLeave(to, from, next) {
     if (this.addedToCart) {
       next(true);
@@ -64,7 +59,6 @@ export default {
   data() {
     return {
       addedToCart: false,
-      parts,
       selectedPart: {
         head: {},
         torso: {},
@@ -74,6 +68,9 @@ export default {
       },
       cart: [],
     };
+  },
+  created() {
+    this.$store.dispatch('getPartsFromAPI');
   },
   methods: {
     addToCart() {
@@ -96,6 +93,9 @@ export default {
     headBorderStyle() {
       const style = this.selectedPart.head.onSale ? '3px solid red' : '3px solid #aaa';
       return style;
+    },
+    availableParts() {
+      return this.$store.state.parts;
     },
   },
   mixins: [createdHookMixin],
