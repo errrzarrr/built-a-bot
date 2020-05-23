@@ -9,9 +9,9 @@ Vuex Store it's composed of this 4 elements:
 
 - **State**: At the heart of Vuex Store is the shared state tree. Works well with change detection. 
 
-- **Mutations**: Are sync functions and works directly on state. All changes to data on a store must happen through mutations
+- **Mutations**: Are sync functions and works directly on state. All changes to data on a store must happen through mutations. Mutations are `commit`ed.
 
-- **Actions**: Are async functions used for cases when you have, for example, to fetch data from a server.
+- **Actions**: Are async functions used for cases when you have, for example, to fetch data from a server. Actions are `dispatch`ed.
 
 - **Getters**: Globally available functions that retrieve data and perform some kind of calculation on it before returning it.
 

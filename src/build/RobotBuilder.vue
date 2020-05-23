@@ -66,7 +66,6 @@ export default {
         rightArm: {},
         leftArm: {},
       },
-      cart: [],
     };
   },
   created() {
@@ -82,7 +81,7 @@ export default {
         + robot.base.cost;
       this.addedToCart = true;
       // eslint-disable-next-line prefer-object-spread
-      this.$store.commit('addRobotToCart', Object.assign({}, robot, { cost }));
+      this.$store.dispatch('addRobotToCart', Object.assign({}, robot, { cost }));
       return cost;
     },
   },
@@ -101,6 +100,7 @@ export default {
   mixins: [createdHookMixin],
 };
 </script>
+
 <!-- scoped: because global atributes shouldn't be in child components -->
 <style lang="scss" scoped>
 .part {

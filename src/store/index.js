@@ -31,6 +31,13 @@ const actions = {
       .then((result) => commit('updateParts', result.data))
       .catch(console.error);
   },
+  // eslint-disable-next-line no-shadow
+  addRobotToCart({ state, commit }, robot) {
+    const cart = [...state.cart, robot];
+    axios.post('/api/cart', cart)
+      .then(() => commit('addRobotToCart', robot))
+      .catch(console.error);
+  },
 };
 
 export default new Vuex.Store({
