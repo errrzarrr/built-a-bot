@@ -34,9 +34,8 @@ const actions = {
   // eslint-disable-next-line no-shadow
   addRobotToCart({ state, commit }, robot) {
     const cart = [...state.cart, robot];
-    axios.post('/api/cart', cart)
-      .then(() => commit('addRobotToCart', robot))
-      .catch(console.error);
+    return axios.post('/api/cart', cart)
+      .then(() => commit('addRobotToCart', robot));
   },
 };
 

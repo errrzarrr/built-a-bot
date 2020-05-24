@@ -81,8 +81,9 @@ export default {
         + robot.base.cost;
       this.addedToCart = true;
       // eslint-disable-next-line prefer-object-spread
-      this.$store.dispatch('addRobotToCart', Object.assign({}, robot, { cost }));
-      return cost;
+      this.$store.dispatch('addRobotToCart', Object.assign({}, robot, { cost }))
+        .then(() => this.$router.push('/cart'))
+        .catch(console.error);
     },
   },
   computed: {
