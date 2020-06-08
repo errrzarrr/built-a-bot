@@ -10,8 +10,6 @@
 
 <script>
 
-import pinDirective from '../shared/pin-directive';
-
 function getPrevValidIndex(index, length) {
   const decreasedIndex = index - 1;
   return decreasedIndex < 0 ? length - 1 : decreasedIndex;
@@ -22,7 +20,7 @@ function getNextValidIndex(index, length) {
 }
 
 export default {
-  directives: { pin: pinDirective },
+
   props: {
     parts: {
       type: Array,
